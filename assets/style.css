@@ -1,5 +1,5 @@
 .startbutton {
-    display: block;
+    display: inline-block;
     background-color: blue;
     color: white;
     font-size: 20px;
