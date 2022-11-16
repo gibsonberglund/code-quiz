@@ -2,6 +2,9 @@ header {
     text-align: center;
 }
 
+.firtQ {
+    display: center;
+}
 .startbutton {
     display: inline-block;
     background-color: blue;
@@ -15,7 +18,17 @@ header {
     box-shadow: 5px 5px 5px black;
 }
 
+.startbutton:hover {
+    border: 2px, solid, red;
+}
+
+.submitBtn {
+    width: 75px;
+    border: 2px solid black;
+}
+
 .timer {
+    display: block;
     float: right;
-    font-size: 40px;
+    font-size: 25px;
 }

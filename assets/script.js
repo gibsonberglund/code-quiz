@@ -13,7 +13,7 @@ var option3 = document.querySelector('#option3');
 var option4 = document.querySelector('#option4');
 
 //score counter
-var score = localStorage.getItem("score", 0);
+var score = localStorage.setItem('score', 0);
 
 //score display
 var scoredisplay = document.querySelector('#scoredisplay');
@@ -26,7 +26,7 @@ function timerstart() {
     // Sets interval in variable
     var timerInterval = setInterval(function() {
       seconds--;
-      timer.textContent = seconds;
+      timer.textContent = "Time remaining: " + seconds;
   
       if(seconds === 0) {
         // Stops execution of action at set interval
@@ -38,19 +38,13 @@ function timerstart() {
   }
 
 
-function scoreUp() {
+function scoreUp(event) {
+    event.preventDefault();
+    localStorage.getItem('score');
     score ++;
-    localStorage.setItem("score", score);
+    localStorage.setItem('score', score);
     console.log(score);
 }
-
-/*
-  var userchoice = answer.addEventListener('click', function(event) {
-    event.preventDefault();
-    score++;
-    localStorage.setItem('score', score);
-  })
-  */
 
 //when start button is clicked, intro paragraph and start button disappear
 startQuiz.addEventListener('click', function (event) {
@@ -81,8 +75,6 @@ startQuiz.addEventListener('click', function (event) {
 
 })
 
-
-
 //resets question heading and answer buttons
 function secondQ () {
     firstQ.textContent = "This is the second question"
@@ -102,9 +94,7 @@ function secondQ () {
         event.preventDefault();
         thirdQ();
     })
-
 }
-
 
 //resets question and answer buttons for third question
 function thirdQ () {
@@ -184,12 +174,22 @@ function sixthQ () {
         console.log("here");
         })
 }
+var hiScore = document.querySelector('.hiScore');
+var submitBtn = document.querySelector(".submitBtn");
 
 //score display screen
 function yourScore () {
     firstQ.textContent = "Here is your score:"
     qButtons.style.display = "none";
     scoredisplay.textContent = score;
+    var hiScoreInfo = {
+        username: hiScore.value,
+        userscore: score,
+    }
+    submitBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+        console.log(hiScoreInfo);
+    })
 }
 
 
@@ -197,11 +197,10 @@ function yourScore () {
 NOT DONE
 
 tally correct and incorrect answers
-display score on screen
 add a high scores form to final screen
-add timer
-
+hide high scores textfield and submit button until final screen
 
 DONE
-
+add timer
+display score on screen
 */
