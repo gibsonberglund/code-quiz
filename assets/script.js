@@ -12,29 +12,66 @@ var option2 = document.querySelector('#option2');
 var option3 = document.querySelector('#option3');
 var option4 = document.querySelector('#option4');
 
-//when start button is clicked, intro paragraph and start button disappear, first question and answer buttons are displayed
+//score counter
+var score = localStorage.getItem("score");
+
+//score display
+var scoredisplay = document.querySelector('#scoredisplay');
+
+var timer = document.querySelector(".timer");
+
+var seconds = 75
+
+function timerstart() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function() {
+      seconds--;
+      timer.textContent = seconds;
+  
+      if(seconds === 0) {
+        // Stops execution of action at set interval
+        clearInterval(timerInterval);
+        alert("you lose");
+      }
+  
+    }, 1000);
+  }
+
+//when start button is clicked, intro paragraph and start button disappear
 startQuiz.addEventListener('click', function (event) {
     event.preventDefault();
-    console.log("did I do this right?");
-    firstQ.textContent = "This is the first question";
     intro.textContent = "";
     startQuiz.style.display = "none";
+    timerstart();
+    
+//first question and answer buttons are displayed
+    firstQ.textContent = "This is the first question";
     option1.setAttribute("class", "startbutton");
-    option1.textContent = "option1";
     option2.setAttribute("class", "startbutton");
-    option2.textContent = "option2";
     option3.setAttribute("class", "startbutton");
-    option3.textContent = "option3";
     option4.setAttribute("class", "startbutton");
+    option1.textContent = "option1";
+    option2.textContent = "option2";
+    option3.textContent = "option3";
     option4.textContent = "option4";
-
-})
-
+//set score to 0
+    score = 0;
+//listens for correct answer and augments score
+    option1.addEventListener('click', function(event){
+        event.preventDefault();
+        score ++;
+        localStorage.setItem("score", score);
+        console.log(score);
+    })
 //when an answer is clicked, move on to second question
-qButtons.addEventListener('click', function (event) {
+    qButtons.addEventListener('click', function (event) {
     event.preventDefault();
     secondQ();
+    })
+
 })
+
+
 
 //resets question heading and answer buttons
 function secondQ () {
@@ -43,11 +80,24 @@ function secondQ () {
     option2.textContent = "choice";
     option3.textContent = "choices";
     option4.textContent = "choicel";
+    if (score=0) {
+        intro.textContent = "Correct!";
+    } else {
+        intro.textContent = "Incorrect :("
+    }
+//listens for correct answer and augments score
+    option2.addEventListener('click', function(event){
+        event.preventDefault();
+        score ++;
+        localStorage.setItem("score", score);
+        console.log(score);
+        })
 //listens for a click and moves on to question three
     qButtons.addEventListener('click', function (event) {
         event.preventDefault();
         thirdQ();
     })
+
 }
 
 
@@ -58,14 +108,100 @@ function thirdQ () {
     option2.textContent = "chce";
     option3.textContent = "choces";
     option4.textContent = "chicel";
+//listens for correct answer and augments score
+    option3.addEventListener('click', function(event){
+        event.preventDefault();
+        score ++;
+        localStorage.setItem("score", score);
+        console.log(score);
+        })
+//listens for a click and moves on to question three
+    qButtons.addEventListener('click', function (event) {
+        event.preventDefault();
+        fourthQ();
+    })
+}
+
+//resets for fourth question
+function fourthQ () {
+    firstQ.textContent = "This is the fourth question"
+    option1.textContent = "cho2";
+    option2.textContent = "chce";
+    option3.textContent = "choces";
+    option4.textContent = "chicel";
+    //listens for a click and moves on to question three
+    qButtons.addEventListener('click', function (event) {
+        event.preventDefault();
+        fifthQ();
+    })
+    //listens for correct answer and augments score
+    option1.addEventListener('click', function(event){
+         event.preventDefault();
+         score ++;
+        localStorage.setItem("score", score);
+        console.log("logging");
+        })
+}
+
+//resets for fifth question
+function fifthQ () {
+    firstQ.textContent = "This is the fifth question"
+    option1.textContent = "cho2";
+    option2.textContent = "chce";
+    option3.textContent = "choces";
+    option4.textContent = "chicel";
+    //listens for a click and moves on to question three
+    qButtons.addEventListener('click', function (event) {
+        event.preventDefault();
+        sixthQ();
+    })
+    //listens for correct answer and augments score
+    option1.addEventListener('click', function(event){
+        event.preventDefault();
+        score ++;
+        localStorage.setItem("score", score);
+        console.log("in");
+        })
+}
+
+//resets for sixth question
+function sixthQ () {
+    firstQ.textContent = "This is the sixth question"
+    option1.textContent = "cho2";
+    option2.textContent = "chce";
+    option3.textContent = "choces";
+    option4.textContent = "chicel";
+    //listens for a click and moves on to question three
+    qButtons.addEventListener('click', function (event) {
+        event.preventDefault();
+        yourScore();
+    })
+    //listens for correct answer and augments score
+    option1.addEventListener('click', function(event){
+        event.preventDefault();
+        score ++;
+        localStorage.setItem("score", score);
+        console.log("here");
+        })
+}
+
+//score display screen
+function yourScore () {
+    firstQ.textContent = "Here is your score:"
+    qButtons.style.display = "none";
+    scoredisplay.textContent = score;
 }
 
 
-//NOT DONE
+/*
+NOT DONE
+
+tally correct and incorrect answers
+display score on screen
+add a high scores form to final screen
+add timer
 
 
+DONE
 
-//DONE
-//set <p> attr to empty
-//display the first question
-//display a row of buttons beneath the first q
+*/
