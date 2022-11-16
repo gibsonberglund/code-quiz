@@ -13,7 +13,7 @@ var option3 = document.querySelector('#option3');
 var option4 = document.querySelector('#option4');
 
 //score counter
-var score = localStorage.getItem("score");
+var score = localStorage.getItem("score", 0);
 
 //score display
 var scoredisplay = document.querySelector('#scoredisplay');
@@ -37,6 +37,21 @@ function timerstart() {
     }, 1000);
   }
 
+
+function scoreUp() {
+    score ++;
+    localStorage.setItem("score", score);
+    console.log(score);
+}
+
+/*
+  var userchoice = answer.addEventListener('click', function(event) {
+    event.preventDefault();
+    score++;
+    localStorage.setItem('score', score);
+  })
+  */
+
 //when start button is clicked, intro paragraph and start button disappear
 startQuiz.addEventListener('click', function (event) {
     event.preventDefault();
@@ -54,15 +69,10 @@ startQuiz.addEventListener('click', function (event) {
     option2.textContent = "option2";
     option3.textContent = "option3";
     option4.textContent = "option4";
-//set score to 0
-    score = 0;
+
+
 //listens for correct answer and augments score
-    option1.addEventListener('click', function(event){
-        event.preventDefault();
-        score ++;
-        localStorage.setItem("score", score);
-        console.log(score);
-    })
+    option1.addEventListener('click', scoreUp)
 //when an answer is clicked, move on to second question
     qButtons.addEventListener('click', function (event) {
     event.preventDefault();
@@ -86,12 +96,7 @@ function secondQ () {
         intro.textContent = "Incorrect :("
     }
 //listens for correct answer and augments score
-    option2.addEventListener('click', function(event){
-        event.preventDefault();
-        score ++;
-        localStorage.setItem("score", score);
-        console.log(score);
-        })
+    option2.addEventListener('click', scoreUp)
 //listens for a click and moves on to question three
     qButtons.addEventListener('click', function (event) {
         event.preventDefault();
@@ -109,12 +114,7 @@ function thirdQ () {
     option3.textContent = "choces";
     option4.textContent = "chicel";
 //listens for correct answer and augments score
-    option3.addEventListener('click', function(event){
-        event.preventDefault();
-        score ++;
-        localStorage.setItem("score", score);
-        console.log(score);
-        })
+    option3.addEventListener('click', scoreUp);
 //listens for a click and moves on to question three
     qButtons.addEventListener('click', function (event) {
         event.preventDefault();
