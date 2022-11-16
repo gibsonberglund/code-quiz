@@ -13,7 +13,7 @@ var option3 = document.querySelector('#option3');
 var option4 = document.querySelector('#option4');
 
 //score counter
-var score = localStorage.setItem('score', 0);
+var score = 0;
 
 //score display
 var scoredisplay = document.querySelector('#scoredisplay');
@@ -40,9 +40,7 @@ function timerstart() {
 
 function scoreUp(event) {
     event.preventDefault();
-    localStorage.getItem('score');
-    score ++;
-    localStorage.setItem('score', score);
+    score++;
     console.log(score);
 }
 
@@ -54,19 +52,19 @@ startQuiz.addEventListener('click', function (event) {
     timerstart();
     
 //first question and answer buttons are displayed
-    firstQ.textContent = "This is the first question";
+    firstQ.textContent = "JavaScript's representation of the HTML is called the: ";
     option1.setAttribute("class", "startbutton");
     option2.setAttribute("class", "startbutton");
     option3.setAttribute("class", "startbutton");
     option4.setAttribute("class", "startbutton");
-    option1.textContent = "option1";
-    option2.textContent = "option2";
-    option3.textContent = "option3";
-    option4.textContent = "option4";
+    option1.textContent = "PROM";
+    option2.textContent = "CON";
+    option3.textContent = "DOM";
+    option4.textContent = "BLOG";
 
 
 //listens for correct answer and augments score
-    option1.addEventListener('click', scoreUp)
+    option3.addEventListener('click', scoreUp)
 //when an answer is clicked, move on to second question
     qButtons.addEventListener('click', function (event) {
     event.preventDefault();
@@ -77,12 +75,12 @@ startQuiz.addEventListener('click', function (event) {
 
 //resets question heading and answer buttons
 function secondQ () {
-    firstQ.textContent = "This is the second question"
-    option1.textContent = "choice2";
-    option2.textContent = "choice";
-    option3.textContent = "choices";
-    option4.textContent = "choicel";
-    if (score=0) {
+    firstQ.textContent = "What types of objects can be stored in localStorage?"
+    option1.textContent = "All objects";
+    option2.textContent = "Strings only";
+    option3.textContent = "Numbers only";
+    option4.textContent = "Numbers and strings only";
+    if (score===0) {
         intro.textContent = "Correct!";
     } else {
         intro.textContent = "Incorrect :("
@@ -98,13 +96,13 @@ function secondQ () {
 
 //resets question and answer buttons for third question
 function thirdQ () {
-    firstQ.textContent = "This is the third question"
-    option1.textContent = "cho2";
-    option2.textContent = "chce";
-    option3.textContent = "choces";
-    option4.textContent = "chicel";
+    firstQ.textContent = "What is the JQuery syntax for the JavaScript command document.addEventListener('x')?"
+    option1.textContent = "x.$";
+    option2.textContent = "x.document.$";
+    option3.textContent = "document.$('x')";
+    option4.textContent = "$('x')";
 //listens for correct answer and augments score
-    option3.addEventListener('click', scoreUp);
+    option4.addEventListener('click', scoreUp);
 //listens for a click and moves on to question three
     qButtons.addEventListener('click', function (event) {
         event.preventDefault();
@@ -114,65 +112,50 @@ function thirdQ () {
 
 //resets for fourth question
 function fourthQ () {
-    firstQ.textContent = "This is the fourth question"
-    option1.textContent = "cho2";
-    option2.textContent = "chce";
-    option3.textContent = "choces";
-    option4.textContent = "chicel";
+    firstQ.textContent = "What does .stopPropagation do?"
+    option1.textContent = "Prevents the current function from bubbling up to the next parent function";
+    option2.textContent = "Prevents parent functions from accessing the current function";
+    option3.textContent = "Prevents the current function from executing more that once";
+    option4.textContent = "Stops the current function from executing";
+    //listens for correct answer and augments score
+    option1.addEventListener('click', scoreUp);
     //listens for a click and moves on to question three
     qButtons.addEventListener('click', function (event) {
         event.preventDefault();
         fifthQ();
     })
-    //listens for correct answer and augments score
-    option1.addEventListener('click', function(event){
-         event.preventDefault();
-         score ++;
-        localStorage.setItem("score", score);
-        console.log("logging");
-        })
 }
 
 //resets for fifth question
 function fifthQ () {
-    firstQ.textContent = "This is the fifth question"
-    option1.textContent = "cho2";
-    option2.textContent = "chce";
-    option3.textContent = "choces";
-    option4.textContent = "chicel";
+    firstQ.textContent = "Everything that happens between {} in a function is called its: "
+    option1.textContent = "range";
+    option2.textContent = "scope";
+    option3.textContent = "array";
+    option4.textContent = "balloon";
+    //listens for correct answer and augments score
+    option2.addEventListener('click', scoreUp);
     //listens for a click and moves on to question three
     qButtons.addEventListener('click', function (event) {
         event.preventDefault();
         sixthQ();
     })
-    //listens for correct answer and augments score
-    option1.addEventListener('click', function(event){
-        event.preventDefault();
-        score ++;
-        localStorage.setItem("score", score);
-        console.log("in");
-        })
 }
 
 //resets for sixth question
 function sixthQ () {
-    firstQ.textContent = "This is the sixth question"
-    option1.textContent = "cho2";
-    option2.textContent = "chce";
-    option3.textContent = "choces";
-    option4.textContent = "chicel";
+    firstQ.textContent = "How can you change the CSS styling of an object using Javascript?"
+    option1.textContent = ".querySelector";
+    option2.textContent = ".textContent";
+    option3.textContent = "console.log";
+    option4.textContent = ".setAttribute";
+    //listens for correct answer and augments score
+    option4.addEventListener('click', scoreUp);
     //listens for a click and moves on to question three
     qButtons.addEventListener('click', function (event) {
         event.preventDefault();
         yourScore();
     })
-    //listens for correct answer and augments score
-    option1.addEventListener('click', function(event){
-        event.preventDefault();
-        score ++;
-        localStorage.setItem("score", score);
-        console.log("here");
-        })
 }
 var hiScore = document.querySelector('.hiScore');
 var submitBtn = document.querySelector(".submitBtn");
