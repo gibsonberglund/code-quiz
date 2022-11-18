@@ -10,7 +10,6 @@
   <body>
     <header>
         <h1>Code Quiz</h1>
-          <section class="timer"></section>
             <p id="intro">Answer these coding related questions within the time limit. Each wrong answer takes time off the clock!</p>
             <h3 id="firstQ"></h3>
     </header>
@@ -22,11 +21,18 @@
         <span class="qbutton" id="option4"></span>
       </ul>
     </section>
-    <section class="startbutton">
-        <h2>Start Quiz</h2>
+    <section class="start">
+        <h2 class="startbutton">Start Quiz</h2>
     </section>
-    <section id="scoredisplay"></section>
-    <textarea class="hiScore"></textarea>
-      <span class = "submitBtn">Submit</span>
+    <section class = "results">
+        <span id="scoreDisplay"></span>
+        <input type="text" id="hiScore" class="hidden"></input>
+        <span id="submitBtn" class="hidden"></span>
+    </section>
+    <section class="timer"></section>
+
     <script src="assets/script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
   </body>

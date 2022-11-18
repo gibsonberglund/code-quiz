@@ -5,7 +5,7 @@ var intro = document.querySelector('#intro');
 //variable for the heading that displays each question
 var firstQ = document.querySelector('#firstQ');
 //variable for the answer button list
-var qButtons = document.querySelector('#choices')
+var qButtons = document.querySelector('#choices');
 //variables for each answer button
 var option1 = document.querySelector('#option1');
 var option2 = document.querySelector('#option2');
@@ -16,11 +16,11 @@ var option4 = document.querySelector('#option4');
 var score = 0;
 
 //score display
-var scoredisplay = document.querySelector('#scoredisplay');
+var scoreDisplay = document.querySelector('#scoreDisplay');
 
 var timer = document.querySelector(".timer");
 
-var seconds = 75
+var seconds = 75;
 
 function timerstart() {
     // Sets interval in variable
@@ -32,18 +32,13 @@ function timerstart() {
         // Stops execution of action at set interval
         clearInterval(timerInterval);
         alert("you lose");
+      } else if (testCleared = true) {
+        clearInterval(timerInterval);
+        timer.textContent = "";
       }
   
     }, 1000);
   }
-
- /* 
-//increments score for correct answers
-function scoreUp() {
-    score++;
-    console.log(score);
-}
-*/
 
 //when start button is clicked, intro paragraph and start button disappear
 startQuiz.addEventListener('click', function (event) {
@@ -70,7 +65,7 @@ startQuiz.addEventListener('click', function (event) {
     var answ1 = "option3";
 
 //when an answer is clicked, move on to second question
-    qButtons.addEventListener('click', function (event) {
+qButtons.addEventListener('click', function (event) {
     event.preventDefault(event);
     var useransw1 = event.target.id;
     if (useransw1 === answ1) {
@@ -78,16 +73,15 @@ startQuiz.addEventListener('click', function (event) {
         console.log(score);
         intro.textContent = "Correct!";
     } else {
-        intro.textContent = "Incorrect :("
-    }
+        intro.textContent = "Incorrect :(";
+    };
     secondQ();
-    })
-
-})
+    });
+});
 
 //resets question heading and answer buttons
 function secondQ () {
-    firstQ.textContent = "What types of objects can be stored in localStorage?"
+    firstQ.textContent = "What types of objects can be stored in localStorage?";
     option1.textContent = "All objects";
     option2.textContent = "Strings only";
     option3.textContent = "Numbers only";
@@ -96,23 +90,24 @@ function secondQ () {
     var answ2 = "option2";
 
 //listens for a click and moves on to question three
-    qButtons.addEventListener('click', function (event) {
+    qButtons.onclick = function (event) {
         event.preventDefault();
+        console.log("is it you");
         var useransw2 = event.target.id;
     if (useransw2 === answ2) {
         score++;
         console.log(score);
         intro.textContent = "Correct!";
     } else {
-        intro.textContent = "Incorrect :("
-    }
-        thirdQ();
-    })
-}
+        intro.textContent = "Incorrect :(";
+    };
+    thirdQ();
+    };
+};
 
 //resets question and answer buttons for third question
 function thirdQ () {
-    firstQ.textContent = "What is the JQuery syntax for the JavaScript command document.addEventListener('x')?"
+    firstQ.textContent = "What is the JQuery syntax for the JavaScript command document.addEventListener('x')?";
     option1.textContent = "x.$";
     option2.textContent = "x.document.$";
     option3.textContent = "document.$('x')";
@@ -120,19 +115,21 @@ function thirdQ () {
 
     var answ3 = "option4";
 
-//listens for a click and moves on to question three
-    qButtons.addEventListener('click', function (event) {
+//listens for a click and moves on to question four
+    qButtons.onclick = function (event) {
         event.preventDefault();
+        console.log("or is it you");
         var useransw3 = event.target.id;
         if (useransw3 === answ3) {
             score++;
             console.log(score);
             intro.textContent = "Correct!";
         } else {
-        intro.textContent = "Incorrect :("
-        }
+        intro.textContent = "Incorrect :(";
+        };
         fourthQ();
-    })
+        console.log("what's happening");
+    }
 }
 
 //resets for fourth question
@@ -146,7 +143,7 @@ function fourthQ () {
     var answ4 = "option1";
 
     //listens for a click and moves on to question three
-    qButtons.addEventListener('click', function (event) {
+    qButtons.onclick = function (event) {
         event.preventDefault();
         var useransw4 = event.target.id;
         if (useransw4 === answ4) {
@@ -155,14 +152,14 @@ function fourthQ () {
             intro.textContent = "Correct!";
         } else {
         intro.textContent = "Incorrect :(";
-        }
+        };
         fifthQ();
-    })
+    }
 }
 
 //resets for fifth question
 function fifthQ () {
-    firstQ.textContent = "Everything that happens between {} in a function is called its: "
+    firstQ.textContent = "Everything that happens between {} in a function is called its: ";
     option1.textContent = "range";
     option2.textContent = "scope";
     option3.textContent = "array";
@@ -171,7 +168,7 @@ function fifthQ () {
     var answ5 = "option2";
 
     //listens for a click and moves on to question three
-    qButtons.addEventListener('click', function (event) {
+    qButtons.onclick = function (event) {
         event.preventDefault();
         console.log(event.target.id);
         var useransw5 = event.target.id;
@@ -181,14 +178,14 @@ function fifthQ () {
             intro.textContent = "Correct!";
         } else {
         intro.textContent = "Incorrect :(";
-        }
+        };
         sixthQ();
-    })
-}
+    };
+};
 
 //resets for sixth question
 function sixthQ () {
-    firstQ.textContent = "How can you change the CSS styling of an object using Javascript?"
+    firstQ.textContent = "How can you change the CSS styling of an object using Javascript?";
     option1.textContent = ".querySelector";
     option2.textContent = ".textContent";
     option3.textContent = "console.log";
@@ -197,7 +194,7 @@ function sixthQ () {
     var answ6 = "option4";
 
     //listens for a click and moves on to question three
-    qButtons.addEventListener('click', function (event) {
+    qButtons.onclick = function (event) {
         event.preventDefault();
         var useransw6 = event.target.id;
         if (useransw6 === answ6) {
@@ -205,29 +202,34 @@ function sixthQ () {
             console.log(score);
             intro.textContent = "Correct!";
         } else {
-        intro.textContent = "Incorrect :("
-        }
+        intro.textContent = "Incorrect :(";
+        };
         yourScore();
-    })
-}
+    };
+};
 
 var hiScore = document.querySelector('.hiScore');
 var submitBtn = document.querySelector(".submitBtn");
 
 //score display screen
 function yourScore () {
-    firstQ.textContent = "Here is your score:"
+    testCleared = true;
     qButtons.style.display = "none";
-    scoredisplay.textContent = "Your score: " + score;
+    scoreDisplay.textContent = "Your score: " + score;
+    submitBtn.setAttribute('class', 'submitBtn');
+    submitBtn.textContent = 'Submit';
+    firstQ.setAttribute('style', 'display: none');
+
+    hiScore.setAttribute('class', 'hiScore');
     var hiScoreInfo = {
         username: hiScore.value,
         userscore: score,
-    }
+    };
     submitBtn.addEventListener("click", function(event) {
         event.preventDefault();
         console.log(hiScoreInfo);
-    })
-}
+    });
+};
 
 
 /*

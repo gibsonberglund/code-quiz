@@ -5,8 +5,20 @@ header {
 .firtQ {
     display: center;
 }
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
 .startbutton {
-    display: inline-block;
     background-color: blue;
     color: white;
     font-size: 20px;
@@ -18,17 +30,33 @@ header {
     box-shadow: 5px 5px 5px black;
 }
 
-.startbutton:hover {
-    border: 2px, solid, red;
+.hidden{
+    display: none;
+}
+
+
+.timer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+}
+
+#scoreDisplay {
+    font-size: 24px;
+    text-align: center;
+    color: blue;
 }
 
 .submitBtn {
-    width: 75px;
-    border: 2px solid black;
+    display: block;
 }
 
-.timer {
+.hiScore {
     display: block;
-    float: right;
-    font-size: 25px;
 }
