@@ -4,8 +4,6 @@ var startQuiz = document.querySelector('.startbutton');
 var intro = document.querySelector('#intro');
 //variable for the heading that displays each question
 var firstQ = document.querySelector('#firstQ');
-//variable for the answer button list
-var qButtons = document.querySelector('#choices');
 
 //variables for every answer button
 //q1
@@ -48,7 +46,7 @@ var score = 0;
 var scoreDisplay = document.querySelector('#scoreDisplay');
 
 //timer
-var timer = document.querySelector(".timer");
+var timer = document.querySelector("#timer");
 var seconds = 75;
 function timerstart() {
     // Sets interval in variable
@@ -60,11 +58,7 @@ function timerstart() {
         // Stops execution of action at set interval
         clearInterval(timerInterval);
         alert("you lose");
-      } else if (testCleared = true) {
-        clearInterval(timerInterval);
-        timer.textContent = "";
       }
-  
     }, 1000);
   }
 
@@ -99,9 +93,9 @@ choices1.addEventListener('click', function (event) {
     if (useransw1 === answ1) {
         score++;
         console.log(score);
-        intro.textContent = "Correct!";
+        rightorwrong.textContent = "Correct:)";
     } else {
-        intro.textContent = "Incorrect :(";
+        rightorwrong.textContent = "Incorrect :(";
     };
     secondQ();
     });
@@ -125,15 +119,12 @@ function secondQ () {
 //listens for a click and moves on to question three
     choices2.addEventListener('click', function(event) {
         event.preventDefault();
-        console.log("is it you");
         var useransw2 = event.target.id;
     if (useransw2 === answ2) {
         score++;
-        console.log("answ2 correct");
-        intro.textContent = "Correct!";
+        rightorwrong.textContent = "Correct:)";
     } else {
-        intro.textContent = "Incorrect :(";
-        console.log("answ2 incorrect");
+        rightorwrong.textContent = "Incorrect :(";
     };
     thirdQ();
     });
@@ -157,17 +148,15 @@ function thirdQ () {
 //listens for a click and moves on to question four
     choices3.onclick = function (event) {
         event.preventDefault();
-        console.log("or is it you");
         var useransw3 = event.target.id;
         if (useransw3 === answ3) {
             score++;
             console.log(score);
-            intro.textContent = "Correct!";
+            rightorwrong.textContent = "Correct:)";
         } else {
-        intro.textContent = "Incorrect :(";
+            rightorwrong.textContent = "Incorrect :(";
         };
         fourthQ();
-        console.log("what's happening");
     }
 }
 
@@ -193,9 +182,9 @@ function fourthQ () {
         if (useransw4 === answ4) {
             score++;
             console.log(score);
-            intro.textContent = "Correct!";
+            rightorwrong.textContent = "Correct :)";
         } else {
-        intro.textContent = "Incorrect :(";
+            rightorwrong.textContent = "Incorrect :(";
         };
         fifthQ();
     }
@@ -224,9 +213,9 @@ function fifthQ () {
         if (useransw5 === answ5) {
             score++;
             console.log(score);
-            intro.textContent = "Correct!";
+            rightorwrong.textContent = "Correct :)";
         } else {
-        intro.textContent = "Incorrect :(";
+            rightorwrong.textContent = "Incorrect :(";
         };
         yourScore();
     };
@@ -239,11 +228,15 @@ var submitBtn = document.querySelector(".submitBtn");
 function yourScore () {
     testCleared = true;
     choices5.style.display = "none";
+    firstQ.style.display = "none";
     scoreDisplay.textContent = "Your score: " + score;
     submitBtn.setAttribute('class', 'submitBtn');
     submitBtn.textContent = 'Submit';
     firstQ.setAttribute('style', 'display: none');
-
+    if (testCleared = true) {
+        clearInterval(timerInterval);
+        timer.textContent = "";
+    }
     hiScore.setAttribute('class', 'hiScore');
     var hiScoreInfo = {
         username: hiScore.value,
