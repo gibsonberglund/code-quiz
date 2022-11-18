@@ -5,6 +5,10 @@ var intro = document.querySelector('#intro');
 //variable for the heading that displays each question
 var firstQ = document.querySelector('#firstQ');
 
+//variables for scoreboard
+var hiScore = document.querySelector('#hiScore');
+var submitBtn = document.querySelector("#submitBtn");
+
 //variables for every answer button
 //q1
 var option1q1 = document.querySelector('#option1q1');
@@ -45,6 +49,8 @@ var score = 0;
 //score display
 var scoreDisplay = document.querySelector('#scoreDisplay');
 
+var testCleared = false;
+
 //timer
 var timer = document.querySelector("#timer");
 var seconds = 75;
@@ -54,13 +60,14 @@ function timerstart() {
       seconds--;
       timer.textContent = "Time remaining: " + seconds;
   
-      if(seconds === 0) {
-        // Stops execution of action at set interval
+      if (testCleared === true){
         clearInterval(timerInterval);
+      } else if (seconds === 0) {
+        // Stops execution of action at set interval
         alert("you lose");
       }
     }, 1000);
-  }
+};
 
 //when start button is clicked, intro paragraph and start button disappear
 startQuiz.addEventListener('click', function (event) {
@@ -208,7 +215,6 @@ function fifthQ () {
     //listens for a click and moves on to question three
     choices5.onclick = function (event) {
         event.preventDefault();
-        console.log(event.target.id);
         var useransw5 = event.target.id;
         if (useransw5 === answ5) {
             score++;
@@ -221,22 +227,17 @@ function fifthQ () {
     };
 };
 
-var hiScore = document.querySelector('.hiScore');
-var submitBtn = document.querySelector(".submitBtn");
-
 //score display screen
 function yourScore () {
-    testCleared = true;
     choices5.style.display = "none";
     firstQ.style.display = "none";
+    firstQ.setAttribute('style', 'display: none');
+    timer.style.display = "none";
     scoreDisplay.textContent = "Your score: " + score;
     submitBtn.setAttribute('class', 'submitBtn');
     submitBtn.textContent = 'Submit';
-    firstQ.setAttribute('style', 'display: none');
-    if (testCleared = true) {
-        clearInterval(timerInterval);
-        timer.textContent = "";
-    }
+    
+    clearInterval(timerstart);
     hiScore.setAttribute('class', 'hiScore');
     var hiScoreInfo = {
         username: hiScore.value,
@@ -244,15 +245,14 @@ function yourScore () {
     };
     submitBtn.addEventListener("click", function(event) {
         event.preventDefault();
-        console.log(hiScoreInfo);
+        firstQ.textContent = hiScore.value;
     });
 };
-
 
 /*
 NOT DONE
 
-tally correct and incorrect answers
+
 add a high scores form to final screen
 hide high scores textfield and submit button until final screen
 wrong answers decrement time-remaining
@@ -260,4 +260,5 @@ wrong answers decrement time-remaining
 DONE
 add timer
 display score on screen
+tally correct and incorrect answers
 */
